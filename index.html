@@ -1,0 +1,122 @@
+  <!DOCTYPE html>
+  <html lang="pl">
+
+  <head>
+      <meta charset="UTF-8">
+      <title>Wera</title>
+
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+      <link href="https://fonts.googleapis.com/css?family=Dancing+Script:400,700&display=swap&subset=latin-ext" rel="stylesheet">
+
+      <style>
+          body {
+              background-image: url('https://cdn.pixabay.com/photo/2018/02/15/21/55/sunset-3156440_960_720.jpg');
+              font-family: 'Dancing Script', cursive;
+              background-size: cover;
+              background-repeat: no-repeat;
+          }
+
+          div.guzik {
+              position: fixed;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+              background-color: #e59e19;
+              width: 100px;
+              text-transform: uppercase;
+              color: red;
+              text-align: center;
+              border-radius: 10px;
+              display: block;
+              font-weight: 900;
+
+          }
+
+          div.guzik:hover {
+              box-shadow: 0px 0px 15px 5px rgba(237, 43, 9, 0.84);
+              cursor: pointer;
+          }
+
+          div.wiersz {
+              color: white;
+              width: 600px;
+              margin: 40px 70px auto auto;
+              font-size: 2rem;
+
+          }
+
+          div.wiersz p::first-letter {
+              font-size: 4rem;
+          }
+
+          a {
+              color: red;
+              text-decoration: none;
+          }
+
+          .fota {
+
+              margin: 100px 70px 0 70%;
+              width: 440px;
+              height: 330px;
+              background-size: 100%;
+              background-image: url("wera.jpeg");
+              background-repeat: no-repeat;
+
+          }
+
+      </style>
+  </head>
+
+
+  <body>
+      <div class="wiersz">
+          <p class="tekstp"></p>
+      </div>
+      <div class="guzik">
+          <p>Weronika</p>
+      </div>
+
+      <div class="fotoplace"></div>
+      <script>
+          const tekstp = document.querySelector('.tekstp');
+          const guzik = document.querySelector('.guzik');
+          const fotoplace = document.querySelector('.fotoplace');
+
+          const txt = 'Weronika, ach ta Weronika ! Dziewcze o cudnej urodzie. Jej ramiona są stworzone do tulenia, jej usta stworzone do całowania, oczy do podziwiania otaczającego ją świata. Jej twarz promienieje radością, piersi przykuwają wzrok swą obfitością a uśmiech jest odzwierciedleniem jej radosnego wnętrza. I choć czasem puszcza bąki to jej wybaczam.'
+
+          let indexText = 0;
+          const time = 30;
+          let blokada = true
+
+
+
+
+          guzik.addEventListener('click', () => {
+              if (blokada) {
+
+
+                  blokada = false
+
+                  const addLetter = () => {
+
+                      tekstp.textContent += txt[indexText];
+                      indexText++;
+
+                      if (indexText === txt.length) {
+                          clearInterval(indexTyping);
+                          fotoplace.classList.add('fota');
+                      }
+                  }
+
+
+                  const indexTyping = setInterval(addLetter, time);
+              }
+
+          });
+
+      </script>
+  </body>
+
+  </html>
